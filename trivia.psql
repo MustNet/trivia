@@ -1,0 +1,31 @@
+
+CREATE TABLE categories (
+  id SERIAL PRIMARY KEY,
+  type VARCHAR NOT NULL UNIQUE
+);
+
+CREATE TABLE questions (
+  id SERIAL PRIMARY KEY,
+  question VARCHAR NOT NULL,
+  answer VARCHAR NOT NULL,
+  category INTEGER REFERENCES categories(id),
+  difficulty INTEGER NOT NULL
+);
+
+-- Categories
+INSERT INTO categories (type) VALUES
+('Science'),
+('Art'),
+('Geography'),
+('History'),
+('Entertainment'),
+('Sports');
+
+-- Questions
+INSERT INTO questions (question, answer, category, difficulty) VALUES
+('What is the heaviest organ in the human body?', 'Liver', 1, 4),
+('Who painted the Mona Lisa?', 'Leonardo da Vinci', 2, 2),
+('What is the capital of France?', 'Paris', 3, 1),
+('When did WW2 end?', '1945', 4, 3),
+('Who played Jack in Titanic?', 'Leonardo DiCaprio', 5, 1),
+('How many players are on a soccer team?', '11', 6, 1);
